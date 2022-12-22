@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sunshine/Services/Firebase.google.authentication.dart';
+import 'package:sunshine/screens/home.dart';
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
 
@@ -38,10 +40,13 @@ class _LandingScreenState extends State<LandingScreen> {
                     fontWeight: FontWeight.w100)
             ),
           ),
-          SvgPicture.asset(
-            landing,
-            height: height * 0.4
-            ),
+          SizedBox(
+            height: height *0.4,
+            width: width,
+            child: SvgPicture.asset(
+              landing,
+              ),
+          ),
           SizedBox(height: height * 0.038),
           SizedBox(
             width: width*0.8,
@@ -63,7 +68,10 @@ class _LandingScreenState extends State<LandingScreen> {
                   backgroundColor: const Color(0xFFFFDA69),
                   elevation: 3
             ),
-            onPressed: () => Null,
+            onPressed: () => AuthService().signInWithGoogle(),
+                // Navigator.pushReplacement(context, MaterialPageRoute(builder:
+                //     (context) => const HomeScreen()
+                // )),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

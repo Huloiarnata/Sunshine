@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "1037125499570",
-    "project_id": "sunshine-57062",
-    "storage_bucket": "sunshine-57062.appspot.com"
+    "project_number": "67558329576",
+    "project_id": "sunshine-renewable-energy",
+    "storage_bucket": "sunshine-renewable-energy.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1037125499570:android:5865832db417cfb650a7ab",
+        "mobilesdk_app_id": "1:67558329576:android:3f502bb9a4115bdb04cd5d",
         "android_client_info": {
           "package_name": "com.example.sunshine"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1037125499570-l6abvrug6k97q9969tjs58rgl18gambi.apps.googleusercontent.com",
+          "client_id": "67558329576-dodf0bn64gijq64skf6t8sbggih9rvkq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sunshine",
+            "certificate_hash": "2eb369e554feae4fae97be6a4451b9e927a97de6"
+          }
+        },
+        {
+          "client_id": "67558329576-0hilmshpd2atqt4bn8olr0022dii49i7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAsb3gg2TXpqVzEJKTstqosDrAOG9q5wNI"
+          "current_key": "AIzaSyCleFAIYkhTYtEcDeXw_3pVr6lnh-xgcZw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1037125499570-l6abvrug6k97q9969tjs58rgl18gambi.apps.googleusercontent.com",
+              "client_id": "67558329576-0hilmshpd2atqt4bn8olr0022dii49i7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

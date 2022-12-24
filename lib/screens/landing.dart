@@ -69,9 +69,6 @@ class _LandingScreenState extends State<LandingScreen> {
                   elevation: 3
             ),
             onPressed: () => AuthService().signInWithGoogle(),
-                // Navigator.pushReplacement(context, MaterialPageRoute(builder:
-                //     (context) => const HomeScreen()
-                // )),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,

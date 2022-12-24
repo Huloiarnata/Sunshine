@@ -33,6 +33,7 @@ handleAuthState(){
 }
 // SignOut function
 signOutGoogle()async{
+  await GoogleSignIn().disconnect();
   FirebaseAuth.instance.signOut();
 }
 }

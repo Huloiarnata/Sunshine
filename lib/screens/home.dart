@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunshine/Screen%20UI%20Component/home/Draggable.Scrollable.Content.dart';
 import 'package:sunshine/Screen%20UI%20Component/home/Scaffold.drawer.dart';
 import '../Screen UI Component/home/Search.Location.dart';
 class HomeScreen extends StatefulWidget {
@@ -19,7 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context) {
           return Stack(
             children: <Widget>[
-              SearchLocationUI(height,width,context)
+              ServicesUI(height,width),
+              SearchLocationUI(height,width,context),
             ],
           );
         }

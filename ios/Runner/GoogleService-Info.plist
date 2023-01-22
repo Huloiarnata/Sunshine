@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>67558329576-a1k4c5lj40iq0fbrfvuh2ddpuru86uc1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.67558329576-a1k4c5lj40iq0fbrfvuh2ddpuru86uc1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>67558329576-0a1rgm36oualacgc2blg3q4b7o84b8u7.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAHb48Ni1sN81JuGXF3YVJBKBPXMrODGjY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>67558329576</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sunshine</string>
+	<key>PROJECT_ID</key>
+	<string>sunshine-renewable-energy</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sunshine-renewable-energy.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:67558329576:ios:ac16cdadbf5b281a04cd5d</string>
+</dict>
+</plist>

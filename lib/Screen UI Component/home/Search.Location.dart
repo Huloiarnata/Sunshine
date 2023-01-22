@@ -1,16 +1,15 @@
 
 import 'package:flutter/material.dart';
 
-import 'Scaffold.drawer.dart';
-Widget SearchLocationUI( height, width, context){
+Widget SearchLocationUI(height, width, context){
   return Positioned(
     top: height*0.075,
-    left: width*0.05,
+    left: width*0.035,
     child: SizedBox(
-      width: width * 0.9,
+      width: width * 0.93,
       height: height *0.065,
       child: Material(
-        elevation: 4,
+        elevation: 5,
         child: TextField(
           decoration: InputDecoration(
             prefixIcon: IconButton(

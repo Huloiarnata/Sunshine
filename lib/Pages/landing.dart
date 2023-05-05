@@ -35,8 +35,11 @@ class _LandingScreenState extends State<LandingScreen> {
             width: width*0.515,
             child: Text("Sunshine",
                 style:TextStyle(
-                    fontSize: height * 0.05,
-                    fontWeight: FontWeight.w100)
+                    fontSize: height * 0.048,
+                    fontWeight: FontWeight.w200,
+                  color: const Color(0xFF4B4A4A),
+
+                )
             ),
           ),
           SizedBox(
@@ -49,23 +52,42 @@ class _LandingScreenState extends State<LandingScreen> {
           SizedBox(height: height * 0.038),
           SizedBox(
             width: width*0.8,
-            child: Text("Towards a\nSustainable\nFuture...",
+            child: RichText(
+              text: TextSpan(
+                  text: 'Towards a\n',
                 style:TextStyle(
-                color: const Color(0xFF4B4A4A),
-                fontSize: height * 0.039,
-                fontWeight: FontWeight.w400)),
+                       color: const Color(0xFF696969),
+                       fontSize: height * 0.039,
+                     fontWeight: FontWeight.w200),
+                  children: <TextSpan>[
+                    TextSpan(text: 'Sustainable\n',
+                  style:TextStyle(
+                         color: const Color(0xFF4B4A4A),
+                         fontSize: height * 0.039,
+                       fontWeight: FontWeight.w400),
+                    ),
+                    TextSpan(text: 'Future...',
+                        style:TextStyle(
+                              color: const Color(0xFF696969),
+                               fontSize: height * 0.039,
+                               fontWeight: FontWeight.w200
+                        ),
+                    )
+                  ]
+              ),
+            ),
           ),
           SizedBox(height: height * 0.04),
           SizedBox(
             width: width * 0.83,
-            height: height * 0.0525,
+            height: height * 0.062,
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
-                      Radius.circular(30))),
-                  backgroundColor: const Color(0xFFFFDA69),
-                  elevation: 3
+                      Radius.circular(10))),
+                  backgroundColor: const Color(0xFF303133),
+                  elevation: 4
             ),
             onPressed: () => AuthService().signInWithGoogle(),
             child: Row(
@@ -78,7 +100,7 @@ class _LandingScreenState extends State<LandingScreen> {
                 SizedBox(width: width * 0.05),
                 Text("Sign In with Google",
                     style:TextStyle(
-                        color: const Color(0xFF484848),
+                        color: const Color(0xFFF8F8F8),
                         fontSize: height * 0.025,
                         fontWeight: FontWeight.w400)),
 
@@ -86,14 +108,14 @@ class _LandingScreenState extends State<LandingScreen> {
             )
             ),
           ),
-          SizedBox(height: height * 0.018),
+          SizedBox(height: height * 0.016),
           RichText(
             text: TextSpan(
                 text: 'By continuing you are accepting ',
                 style: TextStyle(
                     color: Colors.black,
-                    fontSize: height *0.013,
-                  fontWeight: FontWeight.w300,
+                    fontSize: height *0.014,
+                  fontWeight: FontWeight.w400,
                 ),
                 children: <TextSpan>[
                   TextSpan(text: 'Terms & Conditions',

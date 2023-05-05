@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'screens/splash.dart';
+import 'package:sunshine/Pages/splash.dart';
 
 void main()async{
   WidgetsFlutterBinding.ensureInitialized();

@@ -1,7 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sunshine/Services/Firebase.google.authentication.dart';
+import 'package:sunshine/Services/Firebase.Google.Authentication.dart';
+import 'package:sunshine/Widget/Assets.dart';
 class LandingScreen extends StatefulWidget {
   const LandingScreen({Key? key}) : super(key: key);
 
@@ -12,9 +13,6 @@ class LandingScreen extends StatefulWidget {
 class _LandingScreenState extends State<LandingScreen> {
   @override
   Widget build(BuildContext context) {
-    String logo = 'assets/Logo.svg';
-    String landing = 'assets/landing.svg';
-    String google = 'assets/google.svg';
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -24,7 +22,7 @@ class _LandingScreenState extends State<LandingScreen> {
           top: height*0.1115,
           left: width* 0.005,
           child: SvgPicture.asset(
-            logo,
+            AssetsPath.logo,
             height: height *0.11,
           ),
         ),
@@ -46,7 +44,7 @@ class _LandingScreenState extends State<LandingScreen> {
             height: height *0.4,
             width: width,
             child: SvgPicture.asset(
-              landing,
+              AssetsPath.landing,
               ),
           ),
           SizedBox(height: height * 0.038),
@@ -95,7 +93,7 @@ class _LandingScreenState extends State<LandingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SvgPicture.asset(
-                  google
+                  AssetsPath.google
                 ),
                 SizedBox(width: width * 0.05),
                 Text("Sign In with Google",

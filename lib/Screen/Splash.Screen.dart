@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:sunshine/Services/Auth.State.dart';
+import 'package:sunshine/Services/Firebase.Google.Authstate.dart';
+import 'package:sunshine/Widget/Assets.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
-
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: <Widget>[
           Center(
             child: SvgPicture.asset(
-                'assets/Logo.svg',
+                AssetsPath.logo,
                 height: height*0.23, width: height*0.23,
                 fit: BoxFit.scaleDown
             ),

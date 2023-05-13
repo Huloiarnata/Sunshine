@@ -1,19 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sunshine/Screen/User.Home.Tabs/Profile.Tab.dart';
 import 'package:sunshine/UserData/GoogleUserData.dart';
-import 'package:sunshine/Services/Firebase.Google.Authentication.dart';
-import 'package:sunshine/Widget/Assets.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Bottom.Navigator.dart';
-import 'package:sunshine/Widget/User.Home.Widget/Service.Catalog.dart';
-import 'package:sunshine/Widget/User.Home.Widget/Service.Category.Text.dart';
+
 
 import 'User.Home.Tabs/Home.Tab.dart';
 
 class HomeScreen extends StatefulWidget {
   final GoogleUserInfo userInfo;
   const HomeScreen(
-      {Key? key, required this.userInfo}) : super(key: key);
+      {
+        Key? key,
+        required this.userInfo})
+      : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 case 2:
                   return const Center(child: Text('Notification'));
                 default:
-                  return const Center(child: Text('Profile'));
+                  return const ProfileTab();
               }
             });
         })

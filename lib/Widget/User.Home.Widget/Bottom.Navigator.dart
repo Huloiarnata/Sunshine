@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 class BottomNavigator extends StatefulWidget {
   const BottomNavigator({
     super.key,
@@ -31,27 +33,30 @@ class _BottomNavigatorState extends State<BottomNavigator> {
           backgroundColor: Colors.black, // Set the background color of the BottomNavigationBar to transparent
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white70,
-          iconSize: widget.width*0.074,
+          iconSize: widget.width*0.079,
           showSelectedLabels: false,
           showUnselectedLabels: false,
           currentIndex: currentIndex,
           type: BottomNavigationBarType.fixed,
-          items: const <BottomNavigationBarItem>[
+
+          items:  <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: currentIndex==0?const Icon(Icons.home):const Icon(Icons.home_outlined),
               label: 'Home',
+
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper),
+              icon: currentIndex==1?const Icon(Icons.newspaper):const Icon(Icons.newspaper),
               label: 'News',
 
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_active_outlined),
-              label: 'Setting',
+              icon: currentIndex==2?const Icon(EvaIcons.bell):const Icon(EvaIcons.bellOutline),
+              label: 'Notification',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person_rounded),
+              icon: currentIndex==3?const Icon(CupertinoIcons.person_solid):const Icon(CupertinoIcons.person),
+
               label: 'Profile',
             ),
           ],

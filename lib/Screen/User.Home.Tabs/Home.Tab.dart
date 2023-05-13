@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Service.Catalog.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Service.Category.Text.dart';
-
-import '../../Services/Firebase.Google.Authentication.dart';
 import '../../Widget/Assets.dart';
 import '../Home.Screen.dart';
 
@@ -43,7 +41,7 @@ class _HomeTabState extends State<HomeTab> {
                                 fontSize: widget.height * 0.035,
                                 fontWeight: FontWeight.w200),
                             children: <TextSpan>[
-                              TextSpan(text: "${widget.widget.userInfo?.userName}",
+                              TextSpan(text: "${widget.widget.userInfo.userName}",
                                 style:TextStyle(
                                     color: const Color(0xFF4B4A4A),
                                     fontSize: widget.height * 0.035,
@@ -57,13 +55,13 @@ class _HomeTabState extends State<HomeTab> {
                         padding: EdgeInsets.only(left: widget.width*0.8, top: widget.height*.06),
                         child: IconButton(
                             iconSize: widget.width*0.105,
-                            onPressed: ()=> AuthService().signOutGoogle(),
+                            onPressed: ()=> null,
                             icon:  CircleAvatar(
                               backgroundColor: Colors.black,
                               radius: 50, // set the radius of the avatar
                               child: ClipOval(
                                 child: Image.network(
-                                  widget.widget.userInfo?.userPhotoUrl ?? AssetsPath.google!,
+                                  widget.widget.userInfo.userPhotoUrl ?? AssetsPath.google,
                                   fit: BoxFit.cover, // set the fit mode of the image
                                 ),
                               ),

@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 class BottomNavigator extends StatefulWidget {
   const BottomNavigator({
     super.key,
     required this.width,
+    required this.onIndexChanged,
   });
 
   final double width;
+  final void Function(int) onIndexChanged;
 
   @override
   State<BottomNavigator> createState() => _BottomNavigatorState();
@@ -13,10 +17,16 @@ class BottomNavigator extends StatefulWidget {
 
 class _BottomNavigatorState extends State<BottomNavigator> {
   int currentIndex = 0;
+  final StreamController<int> _streamController = StreamController<int>();
+  Stream<int> get indexStream => _streamController.stream;
+  @override
+  void dispose() {
+    _streamController.close();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: BottomNavigationBar(
+    return BottomNavigationBar(
           elevation: 4,
           backgroundColor: Colors.black, // Set the background color of the BottomNavigationBar to transparent
           selectedItemColor: Colors.white,
@@ -48,9 +58,10 @@ class _BottomNavigatorState extends State<BottomNavigator> {
         onTap: (index){
             setState(() {
               currentIndex = index;
+              _streamController.sink.add(currentIndex);
             });
+            widget.onIndexChanged(currentIndex);
         },
-      ),
     );
 
   }

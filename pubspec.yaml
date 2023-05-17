@@ -44,6 +44,7 @@ dependencies:
   loading_indicator: ^3.1.0
   font_awesome_flutter: ^10.4.0
   eva_icons_flutter: ^3.1.0
+  mongo_dart: ^0.9.1
 
 dev_dependencies:
   flutter_test:

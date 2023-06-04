@@ -10,12 +10,15 @@ class AuthProvider{
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (BuildContext context,snapshot){
           if(snapshot.connectionState == ConnectionState.waiting){
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           }
           else if(snapshot.hasData){
             GoogleUserInfo userData = GoogleUserInfo(
+                uid: snapshot.data?.uid,
                 userName: snapshot.data?.displayName,
                 userEmail: snapshot.data?.email,
                 userPhoneNumber: snapshot.data?.phoneNumber,

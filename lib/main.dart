@@ -14,14 +14,9 @@ class Sunshine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ThemeData().colorScheme.copyWith(
-          primary: Colors.black,
-        ),
-      ),
-      home: const SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }

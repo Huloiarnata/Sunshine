@@ -21,6 +21,6 @@ class ServiceCategoryText extends StatelessWidget {
         style: TextStyle(
             color: Colors.black,
             fontSize: height * 0.018,
-            fontWeight: FontWeight.w300),),
+            fontWeight: FontWeight.w500),),
     );
   }}

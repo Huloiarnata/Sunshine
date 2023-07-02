@@ -84,7 +84,7 @@ class _LandingScreenState extends State<LandingScreen> {
                   shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
                       Radius.circular(10))),
-                  backgroundColor: const Color(0xFF303133),
+                  backgroundColor: Colors.black,
                   elevation: 4
             ),
             onPressed: () => AuthService().signInWithGoogle(),

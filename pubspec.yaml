@@ -45,6 +45,9 @@ dependencies:
   font_awesome_flutter: ^10.4.0
   eva_icons_flutter: ^3.1.0
   mongo_dart: ^0.9.1
+  syncfusion_flutter_charts: ^22.1.34
+  shimmer: ^3.0.0
+  rive: ^0.7.16
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +76,7 @@ flutter:
     - assets/Logo.svg
     - assets/landing.svg
     - assets/google.svg
+    - assets/loading.riv
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

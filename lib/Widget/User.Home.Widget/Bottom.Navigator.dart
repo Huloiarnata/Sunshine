@@ -30,7 +30,7 @@ class _BottomNavigatorState extends State<BottomNavigator> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
           elevation: 4,
-          backgroundColor: Colors.black, // Set the background color of the BottomNavigationBar to transparent
+          backgroundColor: const Color(0xFF101010), // Set the background color of the BottomNavigationBar to transparent
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white70,
           iconSize: widget.width*0.079,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sunshine/Widget/User.Home.Widget/AreaInsight.widget.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Service.Catalog.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Service.Category.Text.dart';
 import '../../Widget/Assets.dart';
@@ -37,13 +38,13 @@ class _HomeTabState extends State<HomeTab> {
                         text: TextSpan(
                             text: 'Welcome\n',
                             style:TextStyle(
-                                color: const Color(0xFF696969),
+                                color: const Color(0xFF333333),
                                 fontSize: widget.height * 0.035,
                                 fontWeight: FontWeight.w200),
                             children: <TextSpan>[
                               TextSpan(text: "${widget.widget.userInfo.userName}",
                                 style:TextStyle(
-                                    color: const Color(0xFF4B4A4A),
+                                    color:const Color(0xFF303133),
                                     fontSize: widget.height * 0.035,
                                     fontWeight: FontWeight.w400),
                               ),
@@ -72,7 +73,10 @@ class _HomeTabState extends State<HomeTab> {
                   ]
               ),
               ServiceCategoryText(categoryName: "Area Insights",width: widget.width, height: widget.height),
-              ServiceCatalog(width: widget.width, widthFactor: 0.89, height: widget.height,heightFactor: 0.18),
+              AreaInsight(width: widget.width, widthFactor: 0.275, height: widget.height,heightFactor: 0.1),
+
+
+
               ServiceCategoryText(categoryName: "Services",width: widget.width, height: widget.height),
               ServiceCatalog(width: widget.width, widthFactor: 0.275, height: widget.height,heightFactor: 0.1),
               ServiceCategoryText(categoryName: "Government Subsidies",width: widget.width, height: widget.height),

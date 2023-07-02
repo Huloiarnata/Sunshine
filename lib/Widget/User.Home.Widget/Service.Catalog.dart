@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-class ServiceCatalog extends StatelessWidget {
+import "Home.Services.list.dart";
+class ServiceCatalog extends StatefulWidget {
   const ServiceCatalog({
     super.key,
     required this.width,
@@ -15,12 +15,17 @@ class ServiceCatalog extends StatelessWidget {
   final double widthFactor;
 
   @override
+  State<ServiceCatalog> createState() => _ServiceCatalogState();
+}
+
+class _ServiceCatalogState extends State<ServiceCatalog> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.only(left: width*0.05,top: height*0.0125),
+        padding: EdgeInsets.only(left: widget.width*0.05,top: widget.height*0.0125),
         child: SizedBox(
-          height: height * (heightFactor+0.01),
-          width: width* 0.9,
+          height: widget.height * (widget.heightFactor+0.01),
+          width: widget.width* 0.9,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 3,
@@ -28,15 +33,18 @@ class ServiceCatalog extends StatelessWidget {
                 return Row(
                   children: [
                   Container(
-                  height: height*heightFactor,
-                  width: width*widthFactor,
+                  height: widget.height*widget.heightFactor,
+                  width: widget.width*widget.widthFactor,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   //color: Color(0xffa1a1a1),
+                    child: ListTile(
+                      //title: Text(ServicesNames(index: index).getName(index)),
+                    ),
                 ),
-                    SizedBox(width: width*0.035)
+                    SizedBox(width: widget.width*0.035)
                   ],
                 );
               }),

@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-        backgroundColor: Color(0xFFF6F6F6),
+        backgroundColor: const Color(0xFFF6F6F6),
       bottomNavigationBar: BottomNavigator(
           width: width,
            onIndexChanged: (index) {

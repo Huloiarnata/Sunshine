@@ -41,21 +41,21 @@ class _BottomNavigatorState extends State<BottomNavigator> {
 
           items:  <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: currentIndex==0?const Icon(Icons.home):const Icon(Icons.home_outlined),
+              icon: currentIndex==0?const Icon(Icons.home,color: Colors.greenAccent,):const Icon(Icons.home_outlined),
               label: 'Home',
 
             ),
             BottomNavigationBarItem(
-              icon: currentIndex==1?const Icon(Icons.newspaper):const Icon(Icons.newspaper),
+              icon: currentIndex==1?const Icon(Icons.newspaper,color: Colors.greenAccent):const Icon(Icons.newspaper),
               label: 'News',
 
             ),
             BottomNavigationBarItem(
-              icon: currentIndex==2?const Icon(EvaIcons.bell):const Icon(EvaIcons.bellOutline),
+              icon: currentIndex==2?const Icon(EvaIcons.bell,color: Colors.greenAccent):const Icon(EvaIcons.bellOutline),
               label: 'Notification',
             ),
             BottomNavigationBarItem(
-              icon: currentIndex==3?const Icon(CupertinoIcons.person_solid):const Icon(CupertinoIcons.person),
+              icon: currentIndex==3?const Icon(CupertinoIcons.person_solid,color: Colors.greenAccent):const Icon(CupertinoIcons.person),
 
               label: 'Profile',
             ),

@@ -1,11 +1,12 @@
-import 'dart:convert';
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:sunshine/Widget/Assets.dart';
+import 'package:sunshine/Widget/User.Home.Widget/InsightChart.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter/src/painting/gradient.dart' as flutter_gradient;
+import '../../Services/AreaInsights/APIServices.dart';
+import '../../Services/AreaInsights/DataOperations.dart';
 
 
 class AreaInsight extends StatefulWidget {
@@ -27,32 +28,6 @@ class AreaInsight extends StatefulWidget {
 }
 
 class _AreaInsightState extends State<AreaInsight> {
-
-
-  Future<String> fetchInsightData()async{
-    const String nasaPowerUrl = 'https://power.larc.nasa.gov/api/temporal/monthly/point?parameters=ALLSKY_SRF_ALB,CLRSKY_SFC_SW_DWN,ALLSKY_SFC_SW_DWN,T2M,PRECTOTCORR,WD50M,WS50M&community=RE&longitude=73.6915&latitude=24.5854&format=JSON&start=2020&end=2020';
-    final insightResponse =await http.get(Uri.parse(nasaPowerUrl));
-    return insightResponse.body;
-  }
-  String _getMonthAbbreviation(int month) {
-    return [
-      '',
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ][month];
-  }
-  // List of T2M data objects
-  List<T2M> t2mDataObjects = [];
   late TrackballBehavior _trackballBehavior;
   @override
   void initState(){
@@ -62,7 +37,7 @@ class _AreaInsightState extends State<AreaInsight> {
       activationMode: ActivationMode.singleTap,
       tooltipSettings: const InteractiveTooltip(
         enable: true,
-        format: 'point.y °C'
+        format: 'point.y'
       )
     );
     super.initState();
@@ -71,134 +46,83 @@ class _AreaInsightState extends State<AreaInsight> {
   Widget build(BuildContext context) {
     return Column(
     children: [
-      Container(
-          height: widget.height*0.36,
-          width: MediaQuery.sizeOf(context).width,
-          margin: EdgeInsets.all(widget.width*0.05),
-
-        decoration: BoxDecoration(
-          color: const Color(0xFFFFFFFF),
-          borderRadius: BorderRadius.circular(20), // Adjust the radius value to change the roundness
-        ),
-          child: FutureBuilder(
-              future: fetchInsightData(),
+       FutureBuilder(
+              future: APIServices.fetchInsightData(),
               builder: (context,snapshot){
                 if(snapshot.connectionState == ConnectionState.waiting){
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children:[
+                  return Center(
+                    child: Container(
+                      height: widget.height*0.36,
+                      width: MediaQuery.sizeOf(context).width*0.9,
+                      margin: EdgeInsets.all(widget.width*0.00),
 
-                  SizedBox(height: widget.width*0.25,
-                      child: const RiveAnimation.asset(AssetsPath.loading)),
-                        Text("Loading",style: TextStyle(
-                          color: Colors.black, // Customize the color of the category labels
-                          fontSize: widget.height*0.016, // Customize the font size of the category labels
-                          fontWeight: FontWeight.w300, // Customize the font weight of the category labels
-                        ),)
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(20), // Adjust the radius value to change the roundness
+                      ),
+                      child: Stack(
+                       // mainAxisAlignment: MainAxisAlignment.center,
+                          //crossAxisAlignment: CrossAxisAlignment.center,
+                        alignment: AlignmentDirectional.center,
+                          children:[
 
-                ]);
-                }else if (snapshot.hasData) {
+                      SizedBox(height: widget.width*0.18,
+                          child: const RiveAnimation.asset(AssetsPath.loading)),
+                            Text("\n\n\n\nLoading",style: TextStyle(
+                              color: Colors.black, // Customize the color of the category labels
+                              fontSize: widget.height*0.014, // Customize the font size of the category labels
+                              fontWeight: FontWeight.w300, // Customize the font weight of the category labels
+                            ),)
+
+                ]),
+                    ),
+                  );
+                }
+                else if (snapshot.hasData) {
                   String data = snapshot.data??'';
-                  Map<String, dynamic> insightData = json.decode(data);
-                  Map<String,dynamic> t2mData = insightData['properties']['parameter']['T2M'];
-                  //Type casting map
-                  Map<String, double> castedMap = {};//empty map
 
-                  t2mData.forEach((key, value) {
-                    castedMap[key] = value.toDouble();
-                  });
-                  Map<String, double> updatedMap = {};
+                  List<Content> t2m = DataOperations().dataCleaning(data,'T2M');
+                  List<Content> ws50m = DataOperations().dataCleaning(data,'WS50M');
+                  List<Content> wd50m = DataOperations().dataCleaning(data,'WD50M');
+                  List<Content> preci = DataOperations().dataCleaning(data,'PRECTOTCORR');
+                  List<Content> ASALB = DataOperations().dataCleaning(data,'ALLSKY_SRF_ALB');
+                  List<Content> ALLSKYDWN = DataOperations().dataCleaning(data,'ALLSKY_SFC_SW_DWN');
+                  List<Content> CLRSKYDWN= DataOperations().dataCleaning(data,'CLRSKY_SFC_SW_DWN');
+                  List<List<Content>> allData = [ALLSKYDWN,CLRSKYDWN,ASALB,t2m,ws50m,wd50m,preci];
+                  List<String> alltitle = ["All Sky DWN [kW-hr/m^2/day]","Clear Sky DWN [kW-hr/m^2/day]", "All Sky Srf Albedo","Temp at 2M [°c]","Wind Speed at 50M [m/s]","Wind Direction at 50M [Degrees]","Precipitation [mm/day]"];
+                  return Center(
+                    child: SizedBox(
+                        height: widget.height*0.36,
+                        width: MediaQuery.sizeOf(context).width*0.9,
+                child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 7,
+                        itemBuilder: (BuildContext context, int index ){
 
-                  castedMap.forEach((key, value) {
-                    DateTime date = DateTime.parse('${key.substring(0, 6)}01');
-                    String formattedKey = "${_getMonthAbbreviation(date.month)}'${date.year.toString().substring(2)}";
-                    updatedMap[formattedKey] = value;
-                  });
+                          return Row(children:[
+                            Container(
+                              height: widget.height*0.36,
+                              width: MediaQuery.sizeOf(context).width*0.9,
+                              margin: EdgeInsets.all(widget.width*0.0),
 
-                  //print(updatedMap);
+                              decoration: BoxDecoration(
+                                color: const Color(0xFFFFFFFF),
+                                borderRadius: BorderRadius.circular(20),
+                                // Adjust the radius value to change the roundness
+                              ),
+                              child:SPLineCharts(trackballBehavior: _trackballBehavior, widget: widget, meteorologicalData: allData[index],title:"      "+alltitle[index],)
+                          ),
+                            SizedBox(width: widget.width*0.035)
 
-                  updatedMap.forEach((month, temperature) {
-                    t2mDataObjects.add(T2M(month,temperature));
-                  }
+                          ]);
+                        })),
                   );
-                  return
-                    SfCartesianChart(
-                    borderColor: Colors.transparent,
-                    plotAreaBorderWidth: 0,
-                    borderWidth: 3,
-                    trackballBehavior: _trackballBehavior,
-                    title: ChartTitle(
-                        text: "     Temperature at 2m",
-                        alignment: ChartAlignment.near,
-                        borderWidth: 0,
-                        textStyle: TextStyle(
-                          color: Colors.black, // Customize the color of the category labels
-                          fontSize: widget.height*0.015, // Customize the font size of the category labels
-                          fontWeight: FontWeight.w400,
-                    )),
-                    primaryYAxis: NumericAxis(
-                      isVisible: false,
-                      axisBorderType: AxisBorderType.withoutTopAndBottom,
-                      majorGridLines: const MajorGridLines(color: Colors.transparent),
-                      minorGridLines: const MinorGridLines(color: Colors.transparent),
-                    ),
-                    primaryXAxis: CategoryAxis(
-
-                      labelStyle: TextStyle(
-                        color: Colors.black, // Customize the color of the category labels
-                        fontSize: widget.height*0.013, // Customize the font size of the category labels
-                        fontWeight: FontWeight.bold, // Customize the font weight of the category labels
-                      ),
-                      majorGridLines: const MajorGridLines(color: Colors.transparent),
-                      minorGridLines: const MinorGridLines(color: Colors.transparent),
-
-                    ),
-                    zoomPanBehavior: ZoomPanBehavior(
-                        enableDoubleTapZooming: true,
-                        enablePanning: true,
-                        zoomMode: ZoomMode.x
-                    ),
-                    // Adjust the percentage as needed
-
-                    series: <ChartSeries>[
-                      SplineAreaSeries<T2M,String>(
-                        borderWidth: 1,
-                        borderColor:Colors.greenAccent,
-                        dataSource: t2mDataObjects.sublist(0,6),
-                        xValueMapper: (T2M content,_)=> content.month,
-                        yValueMapper: (T2M content,_)=> content.temp,
-                        gradient: flutter_gradient.LinearGradient(
-                          colors: [
-                            const Color(0xFF65D46E).withOpacity(0.8),
-                            Colors.greenAccent.withOpacity(0.4),
-                            Colors.white
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-
-                      ),
-                    ],
-                    indicators: <TechnicalIndicators>[
-                      AtrIndicator<TechnicalIndicators, String>(
-                        seriesName: 'SplineAreaSeries',
-                        // Add ATR indicator properties here
-                      ),
-                    ],
-                  );
-
                 } else {
                   return Text('Error occurred: ${snapshot.error}');
                 }}
           ),
-    ),
+
       //for page indicator
     ]);
   }
-}
-class T2M{
-  String month;
-  double temp;
-  T2M(this.month, this.temp);
 }

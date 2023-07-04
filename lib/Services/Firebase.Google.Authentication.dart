@@ -44,7 +44,7 @@ class AuthService{
         userPhoneNumber: userPhoneNumber,
         userPhotoUrl: userPhotoUrl
     );
-    var result = await MongoDBServices.insert(data);
+     await MongoDBServices.insert(data);
     log("Data Inserted Successfully");
     // ScaffoldMessenger.of(context)
     //     .showSnackBar(SnackBar(content: Text("Inserted id: " + id.$oid)));

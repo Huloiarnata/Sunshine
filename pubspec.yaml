@@ -77,6 +77,12 @@ flutter:
     - assets/landing.svg
     - assets/google.svg
     - assets/loading.riv
+    - assets/lighting.png
+    - assets/piggy-bank.png
+    - assets/solar-house.png
+    - assets/discG.png
+    - assets/flagG.png
+    - assets/infoG.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

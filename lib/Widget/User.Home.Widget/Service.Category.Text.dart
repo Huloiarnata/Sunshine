@@ -20,7 +20,7 @@ class ServiceCategoryText extends StatelessWidget {
       child: Text(categoryName,
         style: TextStyle(
             color: Colors.black,
-            fontSize: height * 0.018,
-            fontWeight: FontWeight.w500),),
+            fontSize: height * 0.022,
+            fontWeight: FontWeight.w600),),
     );
   }}

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:sunshine/Screen/User.Home.Tabs/News.Tab.dart';
 import 'package:sunshine/Screen/User.Home.Tabs/Profile.Tab.dart';
 import 'package:sunshine/UserData/GoogleUserData.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Bottom.Navigator.dart';
@@ -61,11 +62,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 case 0:
                   return HomeTab(width: width, height: height, widget: widget);
                 case 1:
-                  return const Center(child:  Text('News'));
+                  return NewsTab(height: height, width: width, widget: widget);
                 case 2:
                   return const Center(child: Text('Notification'));
                 default:
-                  return const ProfileTab();
+                  return ProfileTab(width: width, height: height, widget: widget);
               }
             });
         })

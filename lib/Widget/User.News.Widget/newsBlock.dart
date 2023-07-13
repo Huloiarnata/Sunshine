@@ -28,9 +28,15 @@ class NewsBlock extends StatelessWidget {
               : Image.asset(AssetsPath.house),
         ),
         Card(
+          color: Colors.black,
+
           margin: EdgeInsets.symmetric(horizontal: width*0.04),
           child: ExpansionTile(
-            title: Text(article.title),
+            collapsedIconColor: Colors.white,
+            textColor: Colors.white60,
+            title: Text(article.title,style: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.w600,
+            ),),
             subtitle: Text(article.description,maxLines: 1,overflow: TextOverflow.ellipsis,
               softWrap: false,),
             children: [
@@ -39,9 +45,11 @@ class NewsBlock extends StatelessWidget {
                 height: height*0.1,
                 width: width,
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.symmetric(horizontal: width*0.005),
+                  //padding: EdgeInsets.symmetric(horizontal: width*0.002),
                   scrollDirection: Axis.vertical,
-                    child: Text(article.content)),
+                    child: Text(article.content,style: const TextStyle(
+                      color: Colors.greenAccent, fontWeight: FontWeight.w400,
+                    ),)),
               )
 
             ],

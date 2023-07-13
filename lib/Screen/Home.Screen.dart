@@ -47,9 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
           width: width,
            onIndexChanged: (index) {
           _indexController.sink.add(index);
-          setState(() {
-            _currentIndex = index;
-          });
+          _currentIndex = index;
         },
 
       ),

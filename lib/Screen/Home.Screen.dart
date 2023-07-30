@@ -7,6 +7,7 @@ import 'package:sunshine/UserData/GoogleUserData.dart';
 import 'package:sunshine/Widget/User.Home.Widget/Bottom.Navigator.dart';
 
 
+import '../Widget/User.GPT.Widget/SolisticeGPT.assist.dart';
 import 'User.Home.Tabs/Home.Tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 case 1:
                   return NewsTab(height: height, width: width, widget: widget);
                 case 2:
-                  return const Center(child: Text('Notification'));
+                  return GPTTab(height: height, width: width, widget: widget);
                 default:
                   return ProfileTab(width: width, height: height, widget: widget);
               }

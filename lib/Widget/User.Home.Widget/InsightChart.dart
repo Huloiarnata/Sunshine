@@ -34,10 +34,12 @@ class SPLineCharts extends StatelessWidget {
             fontWeight: FontWeight.w500,
           )),
       primaryYAxis: NumericAxis(
-        isVisible: false,
+        //isVisible: false,
+        //title: AxisTitle(text: 'Y-axis Title'),
+        opposedPosition: true,
         axisBorderType: AxisBorderType.withoutTopAndBottom,
         majorGridLines: const MajorGridLines(color: Colors.transparent),
-        minorGridLines: const MinorGridLines(color: Colors.transparent),
+        minorGridLines: const MinorGridLines(color: Colors.grey),
       ),
       primaryXAxis: CategoryAxis(
         //labelPlacement: LabelPlacement.onTicks,
